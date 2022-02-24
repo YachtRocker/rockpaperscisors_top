@@ -22,15 +22,19 @@ function playRound(playerSelection, computerSelection)
     console.log(playerSelection);
     console.log(computerSelection);
 
-    if (playerSelection == "Rock" && computerSelection == "Scissors")
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+
+    
+    if (playerSelection == "rock" && computerSelection == "scissors")
     {
         return "You Win!!!";
     }
-    else if (playerSelection == "Paper" && computerSelection == "Rock")
+    else if (playerSelection == "paper" && computerSelection == "rock")
     {
         return "You Win!!!";
     }
-    else if (playerSelection == "Scissors" && computerSelection == "Paper")
+    else if (playerSelection == "scissors" && computerSelection == "paper")
     {
         return "You Win!!!";
     }
