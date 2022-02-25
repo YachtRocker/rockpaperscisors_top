@@ -48,7 +48,19 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
-const playerSelection = "Rock";
-const computerSelection = computerPlay();
 
-console.log(playRound(playerSelection, computerSelection));
+function game()
+{
+    for (let i = 0; i < 5; i++) 
+    {
+        playerSelection = window.prompt("Choose your weapon (Rock, Paper, Scissor): ")
+        computerSelection = computerPlay();
+        results = playRound(playerSelection, computerSelection)        
+        document.getElementById("results").innerHTML = results;
+        console.log(results);
+        console.log(" ");
+    }
+}
+
+
+game();
