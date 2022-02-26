@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <title>Rock Paper Scissors!!!!</title>
+    </head>
     <body>
-        <h2>Rock Paper Scissors</h2>
-        <button type="button" onclick="game()">Click Me To Play</button>
-        <p id="results"></p>
+        <h1>Rock, Paper, Scissors!</h1>
+        <button id="rpc" type="button" value="rock" onclick="game(this.value)">Rock</button>
+        <button id="rpc" type="button" value="paper" onclick="game(this.value)">Paper</button>
+        <button id="rpc" type="button" value="scissors" onclick="game(this.value)">Scissors</button>
+        <div class="results"></div>
+        <div class="score"></div>
+        <button id="restart">Restart</button>
         
-        <script src="rps.js"></script>
+        <script type="text/javascript" src="rps.js"></script>
     </body>
 </html>
 

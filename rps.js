@@ -1,6 +1,18 @@
+var playerWins = 0;
+var computerWins = 0;
+
+const choices = document.querySelector('rpc');
+const results = document.querySelector('.results');
+const restart = document.querySelector('#restart');
+const score = document.querySelector('.score');
+
+gameStart();
+
+game();
+
 function computerPlay()
 {
-    var pick = Math.floor(Math.random() * 3);
+    let pick = Math.floor(Math.random() * 3);
 
     if(pick == 0)
     {
@@ -18,49 +30,78 @@ function computerPlay()
 
 
 function playRound(playerSelection, computerSelection)
-{
-    console.log(playerSelection);
-    console.log(computerSelection);
-
+{    
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
     
     if (playerSelection == "rock" && computerSelection == "scissors")
     {
-        return "You Win!!!";
+        results.textContent = `You Won!! ${playerSelection} beats ${computerSelection}!`;
+        playerWins++;
+        scoreUpdate();
     }
     else if (playerSelection == "paper" && computerSelection == "rock")
     {
-        return "You Win!!!";
+        results.textContent = `You Won!! ${playerSelection} beats ${computerSelection}!`;
+        playerWins++;
+        scoreUpdate();
     }
     else if (playerSelection == "scissors" && computerSelection == "paper")
     {
-        return "You Win!!!";
+        results.textContent = `You Won!! ${playerSelection} beats ${computerSelection}!`;
+        playerWins++;
+        scoreUpdate();
     }
     else if (playerSelection == computerSelection)
     {
-        return "Tie, play again!"
+        results.textContent = `It's a Tie ${playerSelection} is the same as ${computerSelection}!`;
     }
     else
     {
-        return "Computer Wins!!!"
+        results.textContent = `You Lost!! :( ${computerSelection} beats ${playerSelection}!`;
+        computerWins++;
+        scoreUpdate();
     }
+
+    score.textContent = `${playerWins} - ${computerWins}`;
 }
 
-
-function game()
+function gameStart()
 {
-    for (let i = 0; i < 5; i++) 
+    playerWins = 0;
+    computerWins = 0;
+
+    results.textContent = "";
+    score.textContent = `${playerWins} - ${computerWins}`;
+}
+
+
+function scoreUpdate() 
+{
+    if (playerWins == 5) 
     {
-        playerSelection = window.prompt("Choose your weapon (Rock, Paper, Scissor): ")
-        computerSelection = computerPlay();
-        results = playRound(playerSelection, computerSelection)        
-        document.getElementById("results").innerHTML = results;
-        console.log(results);
-        console.log(" ");
+        score.textContent = "You've won!!";
+        gameEnd();
+    } 
+    else if (computerWins == 5) 
+    {
+        score.textContent = "You've Lost!!"
+        gameEnd();
+    } 
+    else 
+    {
+        score.textContent = `${playerScore} - ${computerScore}`;
     }
 }
 
 
-game();
+function game(clicked_id)
+{    
+    let playerSelection = clicked_id;   
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+}
+
+
+// https://github.com/JunJunBahadur/rock-paper-scissors/blob/main/jquery.js
