@@ -79,20 +79,7 @@ function gameStart()
 
 function scoreUpdate() 
 {
-    if (playerWins == 5) 
-    {
-        score.textContent = "You've won!!";
-        gameEnd();
-    } 
-    else if (computerWins == 5) 
-    {
-        score.textContent = "You've Lost!!"
-        gameEnd();
-    } 
-    else 
-    {
-        score.textContent = `${playerScore} - ${computerScore}`;
-    }
+    score.textContent = `${playerScore} - ${computerScore}`;
 }
 
 
